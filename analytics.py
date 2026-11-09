@@ -14,8 +14,8 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from survey_schema import ITEM_COLS, LIKERT, INTENT_ORDER, Q
 SEED=42
-BLUE,ORANGE,GREEN,GREY,INK="#2a78d6","#eb6834","#1baf7a","#9AA3AD","#0b0b0b"; CAT=["#2a78d6","#eb6834","#1baf7a","#eda100","#e87ba4","#008300"]
-plt.rcParams.update({"figure.dpi":130,"font.size":10,"axes.spines.top":False,"axes.spines.right":False,"axes.edgecolor":GREY,"axes.titleweight":"bold","axes.titlelocation":"left","axes.grid":True,"grid.color":"#E7EAEE","axes.axisbelow":True})
+BLUE,ORANGE,GREEN,GREY,INK="#2F7D5B","#E8792F","#1baf7a","#A9B3A6","#243B2F"; CAT=["#2a78d6","#eb6834","#1baf7a","#eda100","#e87ba4","#008300"]
+plt.rcParams.update({"figure.facecolor":"#FFFFFF","axes.facecolor":"#FFFFFF","text.color":INK,"axes.labelcolor":INK,"xtick.color":INK,"ytick.color":INK,"figure.dpi":130,"font.size":10,"axes.spines.top":False,"axes.spines.right":False,"axes.edgecolor":GREY,"axes.titleweight":"bold","axes.titlelocation":"left","axes.grid":True,"grid.color":"#EEF0E8","axes.axisbelow":True})
 NUM=["q01_age","q04_distance_km","q07_cafe_visits_month","q08_current_spend"]+LIKERT
 CATS=["q02_gender","q03_occupation","q05_income","q06_diet","q09_companions","q10_time_slot","q12_discovery"]
 INC=["Below 25k","25-50k","50k-1L","1-2L","Above 2L"]
@@ -126,9 +126,9 @@ def figs(R):
     def new(w,h): return plt.subplots(figsize=(w,h))
     d=R["data"];b=R["biz"];c=R["clf"];k=R["clu"];a=R["arm"];r=R["reg"]
     v=[b["intent"][x] for x in INTENT_ORDER];f,ax=new(6.5,3);ax.bar(INTENT_ORDER,v,color=BLUE,width=.65);ax.set(title="Would you visit in the first month?",ylabel="Share of respondents");ax.grid(axis="x",visible=False);F["intent"]=f
-    f,ax=new(4.8,4);ax.grid(False);ax.imshow(c["cm"],cmap="Blues");L=["Won't visit","Will visit"];ax.set_xticks([0,1],L);ax.set_yticks([0,1],L);ax.set(title="Confusion matrix",xlabel="Predicted",ylabel="Actual");[ax.text(j,i,c["cm"][i,j],ha="center",va="center",fontsize=16,color="white" if c["cm"][i,j]>c["cm"].max()/2 else INK) for i in range(2) for j in range(2)];ax.spines[:].set_visible(False);F["cm"]=f
+    f,ax=new(4.8,4);ax.grid(False);ax.imshow(c["cm"],cmap="Greens");L=["Won't visit","Will visit"];ax.set_xticks([0,1],L);ax.set_yticks([0,1],L);ax.set(title="Confusion matrix",xlabel="Predicted",ylabel="Actual");[ax.text(j,i,c["cm"][i,j],ha="center",va="center",fontsize=16,color="white" if c["cm"][i,j]>c["cm"].max()/2 else INK) for i in range(2) for j in range(2)];ax.spines[:].set_visible(False);F["cm"]=f
     x,y,_=roc_curve(c["yb"],c["p"]);f,ax=new(4.8,4);ax.plot(x,y,color=BLUE,lw=2);ax.plot([0,1],[0,1],color=GREY,ls="--",lw=1);ax.set(title=f"ROC curve, AUC {c['auc']:.3f}",xlabel="False positive rate",ylabel="True positive rate");F["roc"]=f
-    s=c["drivers"].head(8).iloc[::-1];f,ax=new(6,3.4);ax.barh(s.feature,s.effect,color=[BLUE if z>0 else ORANGE for z in s.effect],height=.65);ax.axvline(0,color=INK,lw=.8);ax.grid(axis="y",visible=False);ax.set(title="What pushes visit intent up (blue) or down (orange)",xlabel="Logistic regression effect");F["drivers"]=f
+    s=c["drivers"].head(8).iloc[::-1];f,ax=new(6,3.4);ax.barh(s.feature,s.effect,color=[BLUE if z>0 else ORANGE for z in s.effect],height=.65);ax.axvline(0,color=INK,lw=.8);ax.grid(axis="y",visible=False);ax.set(title="What pushes visit intent up (green) or down (orange)",xlabel="Logistic regression effect");F["drivers"]=f
     t=k["table"];f,ax=new(6,3);ax.plot(t.k,t.silhouette,color=BLUE,lw=2,marker="o",ms=6);ax.axvline(k["k"],color=GREY,ls="--",lw=1);ax.set(title=f"Silhouette by number of clusters, chosen k = {k['k']}",xlabel="Clusters",ylabel="Silhouette");F["k"]=f
     f,ax=new(7,4)
     for i,x in enumerate(k["profile"].itertuples()):
