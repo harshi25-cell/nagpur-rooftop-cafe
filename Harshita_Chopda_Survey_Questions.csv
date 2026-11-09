@@ -1,0 +1,31 @@
+number,column_or_prefix,question,answer_format
+1,q01_age,What is your age?,Number
+2,q02_gender,What is your gender?,Single choice
+3,q03_occupation,What is your occupation?,Student / Working professional / Business owner / Homemaker / Other
+4,q04_distance_km,"About how far do you live or work from Manish Nagar, in km?",Number
+5,q05_income,What is your monthly personal or household income?,Below 25k / 25-50k / 50k-1L / 1-2L / Above 2L
+6,q06_diet,Which best describes your diet?,Vegan / Vegetarian / Eggetarian / Non-vegetarian
+7,q07_cafe_visits_month,How many times a month do you visit cafes?,Number
+8,q08_current_spend,"How much do you usually spend per person at a cafe, in rupees?",Number
+9,q09_companions,Who do you usually go with?,Friends / Partner / Family / Alone / Colleagues
+10,q10_time_slot,When do you usually go?,Morning / Afternoon / Evening / Night
+11,q11_instagram_influence,Instagram influences which cafes I visit.,1-5 agreement
+12,q12_discovery,How do you usually discover new cafes?,Instagram / Friends / Google Maps / Zomato-Swiggy / Walking past
+13,q13_ambience_importance,Ambience and aesthetics matter to me when choosing a cafe.,1-5 agreement
+14,q14_price_importance,Price matters to me when choosing a cafe.,1-5 agreement
+15,q15_health_conscious,I actively look for healthier food.,1-5 agreement
+16,q16_vegan_openness,I would try vegan food if it tasted good.,1-5 agreement
+17,q17_rooftop_appeal,A rooftop setting would make me more likely to visit.,1-5 agreement
+18,q18_cooled_section_summer,I would visit in summer if a cooled indoor section were available.,1-5 agreement
+19,q19_family_comfort,"A pure-vegetarian, alcohol-free cafe feels comfortable for me and my family.",1-5 agreement
+20,q20_sustainability,I prefer businesses that are environmentally responsible.,1-5 agreement
+21,q21_drinks,Which drinks would you order? Select all that apply.,"orange_matcha, oat_latte, cold_brew, filter_coffee, orange_cooler, kombucha"
+22,q22_food,Which food would you order? Select all that apply.,"buddha_bowl, avocado_toast, paneer_sandwich, cheese_pizza, vegan_burger, thecha_tofu_wrap"
+23,q23_desserts,Which desserts would you order? Select all that apply.,"vegan_cheesecake, orange_tart, vegan_brownie, regular_ice_cream"
+24,q24_features,Which features would make you visit? Select all that apply.,"sunset_seating, plant_wall, board_games, private_celebrations, wifi_workspace, live_acoustic"
+25,q25_signature_drink_price,"What is a fair price for a signature drink, in rupees?",Number
+26,q26_expected_spend,"How much would you expect to spend per person per visit here, in rupees?",Number
+27,q27_expected_visits_month,How many times a month would you visit?,Number
+28,q28_plant_milk_premium,"How much extra would you pay for plant milk, in rupees?",Number
+29,q29_visit_intent,"If this cafe opened in Manish Nagar, would you visit in the first month?",Definitely / Probably / Not sure / Probably not / Definitely not
+30,q30_comment,What would make you love or avoid this cafe?,"Open text, kept for later sentiment analysis"
